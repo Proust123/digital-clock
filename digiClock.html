@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOCK</title>
+
+    <style>
+
+        *{
+            margin : 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section{
+            height : 100vh;
+            width : 100%;
+            background-color: burlywood;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock{
+            height : 80px;
+            width : 400px;
+            border : 4px solid white;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .time{
+            height : 70%;
+            width : 70%;
+            /* border : 1px solid red; */
+            display: flex;
+        }
+
+        #style1{
+            height : 100%;
+            width : 30%;
+            /* border : 1px solid violet; */
+            font-size: 40px;
+            color : white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #style2{
+            height : 100%;
+            width : 5%;
+            /* border : 1px solid slateblue; */
+            font-size: 40px;
+            color : white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .am-pm{
+            height : 70%;
+            width : 15%;
+            /* border : 1px solid green; */
+            font-size: 40px;
+            color : white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <section>
+
+        <div class = 'clock'>
+            <div class = "time">
+                <div class = "hour" id = 'style1'></div>
+                <div class = "colon1" id = 'style2'>:</div>
+                <div class = "minute" id = 'style1'></div>
+                <div class = "colon2" id = 'style2'>:</div>
+                <div class = "second" id = 'style1'></div>
+            </div>
+            <div class = "am-pm"></div>
+        </div>
+
+    </section>
+    
+    <script>
+
+        const hour = document.querySelector('.hour')
+        const minute = document.querySelector('.minute')
+        const second = document.querySelector('.second')
+        
+        const am_pm = document.querySelector('.am-pm')
+
+
+        function digitalClock() {
+
+            let date = new Date()
+
+            let hr = date.getHours()
+            let min = date.getMinutes()
+            let sec = date.getSeconds()
+
+            hour.innerHTML = `${hr}` > 12 ? `0${hr - 12}` : `${hr}`
+            minute.innerHTML = `${min}` < 10 ? `0${min}` : `${min}`
+            second.innerHTML = `${sec}` < 10 ? `0${sec}` : `${sec}`
+            am_pm.innerHTML = `${hr}` > 12 ? 'PM' : 'AM'
+
+            setInterval(() => {
+                digitalClock()
+            },1000)
+
+        }
+
+        digitalClock()
+
+    </script>
+
+</body>
+</html>
